@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from plone.dexterity.interfaces import IDexterityContent
 from collective.transmogrifier.interfaces import ISection
 from collective.transmogrifier.interfaces import ISectionBlueprint
 from collective.transmogrifier.utils import defaultKeys
@@ -58,7 +59,7 @@ class WorkflowHistory(object):
                 yield item
                 continue
 
-            if IBaseObject.providedBy(obj):
+            if IBaseObject.providedBy(obj) or IDexterityContent.providedBy(obj):
                 item_tmp = item
 
                 # get back datetime stamp and set the workflow history
